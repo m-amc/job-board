@@ -20,12 +20,12 @@ class CompanyTest < ActiveSupport::TestCase
   end
 
   test 'name should be present' do
-    @company.name = " "
+    @company.name = ' '
     assert_not @company.valid?
   end
 
   test 'address should be present' do
-    @company.address = " "
+    @company.address = ' '
     assert_not @company.valid?
   end
 
@@ -54,7 +54,7 @@ class CompanyTest < ActiveSupport::TestCase
     @company.save
 
     # Create a duplicate name
-    @company_duplicate =  @company = Company.new(
+    @company_duplicate = @company = Company.new(
       name: 'ABC COMPANY',
       address: 'Main st',
       city: 'Toronto',
