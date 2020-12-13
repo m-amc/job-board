@@ -2,6 +2,8 @@
 
 # Company model definition
 class Company < ApplicationRecord
+  has_many :job_postings
+
   validates :name,
             uniqueness: { case_sensitive: false },
             length: {
