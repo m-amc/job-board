@@ -6,4 +6,14 @@ Rails.application.routes.draw do
   # Root path of the app
   # When the user goes to the root path, rails will look for hte pages controller and index action
   root 'pages#index'
+
+  namespace :api do
+    namespace :v1 do
+      resources :companies
+      resources :job_postings
+    end
+  end
+
+  # This will basically route requests that are not for existing paths pre-defined in our api back to the index path. This will help us handle our routing to our react components without interferring with our actual rails routes for our API
+  get '*path', to: 'pages#index', via: :all
 end
