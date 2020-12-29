@@ -4,6 +4,8 @@
 class Company < ApplicationRecord
   has_many :job_postings
 
+  before_create :slugify
+
   validates :name,
             uniqueness: { case_sensitive: false },
             length: {
@@ -20,4 +22,8 @@ class Company < ApplicationRecord
             uniqueness: { case_sensitive: false },
             length: { maximum: 105 },
             format: { with: VALID_EMAIL_REGEX }
+
+  def slugify
+    self.slug = name.parameterize
+  end
 end

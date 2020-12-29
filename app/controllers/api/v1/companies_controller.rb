@@ -4,7 +4,7 @@ module Api
       # Provide an empty session when forgery check fails. However, this will restore the old session after the request is processed.
       protect_from_forgery with: :null_session
 
-      before_action :find_article, only: %i[show update destroy]
+      before_action :find_company, only: %i[show update destroy]
 
       def index
         companies = Company.all
@@ -41,12 +41,14 @@ module Api
         end
       end
 
+      # Use private so these methods will only be available in this class
       private
 
       def find_company
         @company = Company.find(params[:id])
       end
 
+      # strong parameters - permit attributes
       def company_params
         params.require(:company)
               .permit(:name,
@@ -56,7 +58,9 @@ module Api
                       :country_code,
                       :email,
                       :contact_number,
-                      :website)
+                      :website,
+                      :slug,
+                      :about)
       end
 
       # compound document: to render associated job_postings data
