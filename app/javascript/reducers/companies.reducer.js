@@ -10,9 +10,9 @@ export const companiesReducer = (state = initialState, action) => {
 
     case FETCH_COMPANIES_SUCCEEDED:
       const { companies } = action.payload;
-      
+
       return { ...state, companies }
-    
+
     default:
       // Return the current state if there's no matching action type
       return state;

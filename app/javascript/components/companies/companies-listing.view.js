@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompanies } from '../../actions'
 
@@ -9,18 +10,22 @@ export const CompaniesListing = () => {
     dispatch(fetchCompanies())
   }, [])
 
-  // Get the companies data object from the companies reducer state (state.companies) and return the companies object (state.companies.companies).  We want to get the actual array so state.companies.companies.data
+  // Get the companies data object from the companies reducer state (state.companies) and return the companies object (state.companies.companies).  Note that the reducer companies object is the "data" object (see companies.handler.saga)
   const companies = useSelector(state => state.companies.companies);
+
+  const list = companies.map(company => {
+    const companyAttributes = company.attributes
+    return (
+      <li key={company.id}>
+        <Link to={`/companies/${companyAttributes.slug}`} >{companyAttributes.name}</Link>
+      </li>
+    )
+  })
 
   return (
     <>
       <div>This is the Companies#index view</div>
-      <ul>
-        {companies.map(company => {
-          const companyAttributes = company.attributes
-          return <li key={company.id}>{companyAttributes.name}</li>
-        })}
-      </ul>
+      <ul>{list}</ul>
     </>
   )
 }
