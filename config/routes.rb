@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :companies
+      # specify the slug as the primary param
+      resources :companies, param: :slug
       resources :job_postings
     end
   end

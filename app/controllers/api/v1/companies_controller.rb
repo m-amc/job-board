@@ -45,7 +45,7 @@ module Api
       private
 
       def find_company
-        @company = Company.find(params[:id])
+        @company = Company.find_by(slug: params[:slug])
       end
 
       # strong parameters - permit attributes

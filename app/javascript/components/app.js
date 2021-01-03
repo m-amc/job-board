@@ -11,7 +11,7 @@ const App = () => {
     <Provider store={store}>
       <Switch>
         <Route exact path="/companies" component={CompaniesListing} />
-        <Route exact path="/companies/:id" component={CompanyShow} />
+        <Route exact path="/companies/:slug" component={CompanyShow} />
       </Switch>
     </Provider>
   )
