@@ -14,3 +14,11 @@ export function* requestCompany(slug) {
     url: `/api/v1/companies/${slug}.json`
   })
 }
+
+export function* updateCompany({slug, data}) {
+  return yield axios.request({
+    method: 'patch',
+    url: `/api/v1/companies/${slug}.json`,
+    data: data
+  })
+}

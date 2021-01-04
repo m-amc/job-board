@@ -4,11 +4,13 @@
 import { call, put } from 'redux-saga/effects';
 import {
   fetchCompaniesSucceeded,
-  fetchCompanySucceeded
+  fetchCompanySucceeded,
+  updateCompanySucceeded
 } from '../../actions';
 import {
   requestCompanies,
-  requestCompany
+  requestCompany,
+  updateCompany
 } from '../requests/companies.request.saga';
 
 export function* handleFetchCompaniesRequest() {
@@ -34,6 +36,18 @@ export function* handleFetchCompanyRequest(action) {
 
     // Because we are fetching individual company info, we can directly pass data.data.attributes response to the action creator. we can't do the same in the company listing!
     yield put(fetchCompanySucceeded(data.data.attributes))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export function* handleUpdateCompany(action) {
+  try {
+    const response = yield call(updateCompany, action.payload)
+    const { data } = response;
+
+    // We want to send the updated data from the api response to the reducer so that our state will reflect the updated value
+    yield put(updateCompanySucceeded(data.data.attributes))
   } catch (error) {
     console.log(error)
   }

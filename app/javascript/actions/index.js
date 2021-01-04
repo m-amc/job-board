@@ -2,7 +2,9 @@ import {
   FETCH_COMPANIES_REQUESTED,
   FETCH_COMPANIES_SUCCEEDED,
   FETCH_COMPANY_REQUESTED,
-  FETCH_COMPANY_SUCCEEDED
+  FETCH_COMPANY_SUCCEEDED,
+  UPDATE_COMPANY,
+  UPDATE_COMPANY_SUCCEEDED
 } from './action-types';
 
 export const fetchCompanies = () => ({
@@ -32,6 +34,25 @@ export const fetchCompany = (slug) => {
 export const fetchCompanySucceeded = companyInfo => {
   return {
     type: FETCH_COMPANY_SUCCEEDED,
+    payload: {
+      companyInfo
+    }
+  }
+}
+
+export const updateCompany = (slug, data) => {
+  return {
+    type: UPDATE_COMPANY,
+    payload: {
+      slug,
+      data
+    }
+  }
+}
+
+export const updateCompanySucceeded = companyInfo => {
+  return {
+    type: UPDATE_COMPANY_SUCCEEDED,
     payload: {
       companyInfo
     }
