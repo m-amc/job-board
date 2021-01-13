@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompany, updateCompany } from '../../actions';
 import { CompanyForm } from './company-form.view';
+import { PageLayout } from '../common/page-layout';
 
 const useCompanyInfo = () => {
   const companyInfo = useSelector(state => state.companyInfo.companyInfo);
@@ -56,7 +57,7 @@ export const CompanyShow = ({ match }) => {
   }
 
   return (
-    <>
+    <PageLayout>
       <div>This is the Companies#show view</div>
       <Formik
         enableReinitialize={true}
@@ -66,6 +67,6 @@ export const CompanyShow = ({ match }) => {
       >
         <CompanyForm />
       </Formik>
-    </>
+    </PageLayout>
   )
 }

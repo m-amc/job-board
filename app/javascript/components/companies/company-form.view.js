@@ -5,7 +5,7 @@ import {
 import {
   FormField,
   FIELD_TYPE
-} from '../form-fields/form-field';
+} from '../common/form-fields/form-field';
 
 // Temporary: state and country data will be moved to the backend
 const stateOptions = [

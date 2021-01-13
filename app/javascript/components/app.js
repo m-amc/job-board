@@ -5,10 +5,12 @@ import { Provider } from 'react-redux';
 import { CompaniesListing } from './companies/companies-listing.view';
 import { CompanyShow } from './companies/company-show.view';
 import store from '../store';
+import GlobalTyle from './common/global-styles'
   
 const App = () => {
   return (
     <Provider store={store}>
+      <GlobalTyle />
       <Switch>
         <Route exact path="/companies" component={CompaniesListing} />
         <Route exact path="/companies/:slug" component={CompanyShow} />
