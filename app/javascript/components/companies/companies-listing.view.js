@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompanies } from '../../actions'
+import { PageLayout } from '../common/page-layout';
 
 export const CompaniesListing = () => {
   const dispatch = useDispatch();
@@ -23,10 +24,10 @@ export const CompaniesListing = () => {
   })
 
   return (
-    <>
+    <PageLayout>
       <div>This is the Companies#index view</div>
       <ul>{list}</ul>
-    </>
+    </PageLayout>
   )
 }
 

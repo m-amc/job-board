@@ -7,13 +7,14 @@ const GlobalStyle = createGlobalStyle`
     
     body {
         font-size: 1.6rem;
+        margin: 0;
     }
     
     img {
         width: 100%;
     }
 
-    .skip-link {
+    /* .skip-link {
         position: absolute;
         left: -1000px;
         top: 0;
@@ -28,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
     
     .skip-link:focus {
         left: 0;
-    }
+    } */
 `
 
 export default GlobalStyle;
