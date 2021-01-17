@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import {
   Formik,
-  Form,
 } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompany, updateCompany } from '../../actions';
-import { CompanyForm } from './company-form.view';
+import { CompanyForm } from './company-form';
 import { PageLayout } from '../common/page-layout';
 
 const useCompanyInfo = () => {
