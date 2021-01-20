@@ -1,6 +1,6 @@
 const theme = {
   id: 'light',
-  bodyBackgroundColor: '#ffffff',
+  bodyBackgroundColor: '#f5f5f5',
   bodyFontColor: '#292929',
   primaryColor: '#003459',
   secondaryColor: '#007ea7'
