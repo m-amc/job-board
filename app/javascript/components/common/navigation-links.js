@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { media } from './media-queries';
@@ -40,11 +41,19 @@ const Menu = styled.nav`
   `}
 `
 
+Menu.propTypes = {
+  open: PropTypes.bool.isRequired
+}
+
 const LinkItem = ({ children, ...props }) => (
   <Link {...props}>
     {children}
   </Link>
 )
+
+LinkItem.propTypes = {
+  children: PropTypes.node.isRequired
+}
 
 const StyledLink = styled(LinkItem)`
   display: block;
@@ -90,4 +99,8 @@ export const NavigationMenu = ({menuOpen}) => {
       </ul>
     </Menu>
   )
+}
+
+NavigationMenu.propTypes = {
+  menuOpen: PropTypes.bool.isRequired
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { InputField } from './input-field';
 import { TextAreaField } from './textarea-field';
 import { SelectField } from './select-field';
@@ -20,4 +21,8 @@ export const FormField = ({fieldType, ...rest}) => {
     default: 
       return null
   }
+}
+
+FormField.propTypes = {
+  fieldType: PropTypes.string.isRequired
 }

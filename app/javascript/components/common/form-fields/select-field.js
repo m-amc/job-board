@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, ErrorMessage } from 'formik';
 import { FieldError } from './field-error';
 
@@ -25,3 +26,9 @@ export const SelectField = ({ label, name, options, ...rest }) => (
     <ErrorMessage name={name} component={FieldError} />
   </div>
 )
+
+SelectField.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  options: PropTypes.array.isRequired
+}

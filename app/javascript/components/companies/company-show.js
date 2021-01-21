@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   Formik,
 } from 'formik';
@@ -68,4 +69,8 @@ export const CompanyShow = ({ match }) => {
       </Formik>
     </PageLayout>
   )
+}
+
+CompanyShow.propTypes = {
+  match: PropTypes.object.isRequired
 }
