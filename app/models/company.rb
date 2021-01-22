@@ -22,6 +22,9 @@ class Company < ApplicationRecord
             uniqueness: { case_sensitive: false },
             length: { maximum: 105 },
             format: { with: VALID_EMAIL_REGEX }
+  
+  # for authentication using bcrypt
+  has_secure_password 
 
   def slugify
     self.slug = name.parameterize
