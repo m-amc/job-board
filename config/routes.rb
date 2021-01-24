@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       # specify the slug as the primary param
       resources :companies, param: :slug
       resources :job_postings
+      post 'login', to: 'sessions#create'
+      delete 'logout', to: 'sessions#destroy'
+      get 'logged_in', to: 'sessions#logged_in'
     end
   end
 

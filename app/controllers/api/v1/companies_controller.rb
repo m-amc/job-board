@@ -19,7 +19,11 @@ module Api
         company = Company.new(company_params)
 
         if company.save
-          render json: CompanySerializer.new(company).serializable_hash.to_json
+          # To automatically authenticate and sign in the company user after creation/registration
+          session[:company_id] = company.id
+          render json: CompanySerializer
+            .new(company, { params: { status: :created } })
+            .serializable_hash.to_json
         else
           render json: { error: company.errors.messages }, status: 422
         end
@@ -60,7 +64,8 @@ module Api
                       :contact_number,
                       :website,
                       :slug,
-                      :about)
+                      :about,
+                      :password)
       end
 
       # compound document: to render associated job_postings data
