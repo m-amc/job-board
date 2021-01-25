@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import { fetchCompany, updateCompany } from '../../actions';
-import { CompanyForm } from './company-form';
+import { CompanyFormFields } from './company-form-fields';
 import { PageLayout } from '../common/page-layout';
-import { useCompanyDetails } from './use-company'
+import { useCompanyDetails } from './use-company';
+import { Button } from '../common/button'
 
 export const CompanyShow = ({ match }) => {
   const slug = match.params.slug;
@@ -30,7 +31,10 @@ export const CompanyShow = ({ match }) => {
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        <CompanyForm />
+        <Form>
+          <CompanyFormFields />
+          <Button type="submit">Update</Button>
+        </Form>
       </Formik>
     </PageLayout>
   )

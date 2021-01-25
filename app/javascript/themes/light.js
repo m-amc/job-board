@@ -1,9 +1,12 @@
+import colors from './colors';
+
 const theme = {
   id: 'light',
-  bodyBackgroundColor: '#f5f5f5',
-  bodyFontColor: '#292929',
-  primaryColor: '#003459',
-  secondaryColor: '#007ea7'
+  bodyBackgroundColor: colors.white,
+  bodyFontColor: colors.black,
+  primaryColor: colors.blueDark,
+  secondaryColor: colors.blueLight,
+  ...colors
 }
 
 export default theme;
