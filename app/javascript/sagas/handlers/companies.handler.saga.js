@@ -3,6 +3,7 @@
  */
 import { call, put } from 'redux-saga/effects';
 import {
+  createCompanySucceeded,
   fetchCompaniesSucceeded,
   fetchCompanySucceeded,
   updateCompanySucceeded
@@ -10,7 +11,8 @@ import {
 import {
   requestCompanies,
   requestCompany,
-  updateCompany
+  updateCompany,
+  createCompany
 } from '../requests/companies.request.saga';
 
 export function* handleFetchCompaniesRequest() {
@@ -48,6 +50,16 @@ export function* handleUpdateCompany(action) {
 
     // We want to send the updated data from the api response to the reducer so that our state will reflect the updated value
     yield put(updateCompanySucceeded(data.data.attributes))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export function* handleCreateCompany(action) {
+  try {
+    const response = yield call(createCompany, action.payload);
+    const { data } = response;
+    yield put(createCompanySucceeded(data.data.attributes))
   } catch (error) {
     console.log(error)
   }

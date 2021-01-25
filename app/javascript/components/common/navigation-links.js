@@ -87,7 +87,7 @@ const StyledLink = styled(LinkItem)`
 
 const FIND_JOBS = "Find jobs";
 const POST_JOBS = "Post jobs";
-const EMPLOYER_REGISTRATION = "Employer Registration"
+const EMPLOYER_SIGN_UP = "Sign Up"
 
 export const NavigationMenu = ({menuOpen}) => {
   return (
@@ -95,7 +95,7 @@ export const NavigationMenu = ({menuOpen}) => {
       <ul>
         <li><StyledLink to="/jobs" data-text={FIND_JOBS}>{FIND_JOBS}</StyledLink></li>
         <li><StyledLink to="/login" data-text={POST_JOBS}>{POST_JOBS}</StyledLink></li>
-        <li><StyledLink to="/register" data-text={EMPLOYER_REGISTRATION}>{EMPLOYER_REGISTRATION}</StyledLink></li>
+        <li><StyledLink to="/join/sign-up" data-text={EMPLOYER_SIGN_UP}>{EMPLOYER_SIGN_UP}</StyledLink></li>
       </ul>
     </Menu>
   )

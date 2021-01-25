@@ -2,7 +2,7 @@ module Api
   module V1
     class CompaniesController < ApplicationController
       # Provide an empty session when forgery check fails. However, this will restore the old session after the request is processed.
-      protect_from_forgery with: :null_session
+      # protect_from_forgery with: :null_session
 
       before_action :find_company, only: %i[show update destroy]
 

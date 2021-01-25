@@ -4,7 +4,8 @@
 class Company < ApplicationRecord
   has_many :job_postings
 
-  before_create :slugify
+  # slugify on create and if name changed during update
+  before_save :slugify, if: :name_changed?
 
   validates :name,
             uniqueness: { case_sensitive: false },
@@ -24,7 +25,7 @@ class Company < ApplicationRecord
             format: { with: VALID_EMAIL_REGEX }
   
   # for authentication using bcrypt
-  has_secure_password 
+  has_secure_password :password, validations: true
 
   def slugify
     self.slug = name.parameterize

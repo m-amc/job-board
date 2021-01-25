@@ -5,5 +5,5 @@ import { companyReducer } from './company.reducer';
 // Combine all reducers
 export default combineReducers({
   companies: companiesReducer,
-  companyInfo: companyReducer
+  companyDetails: companyReducer
 })

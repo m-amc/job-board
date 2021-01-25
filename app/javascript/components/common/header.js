@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { media } from '../common/media-queries';
 import { NavigationMenu } from './navigation-links';
@@ -32,13 +33,21 @@ const StyledMobileMenu = styled.button`
   `}
 `
 
+const StyledLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+`
+
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <HeaderWrapper>
       <MainHeadingWrapper>
-        <h1>Job Board</h1>
+        <h1>
+          <StyledLink to="/">Job Board</StyledLink>
+        </h1>
       </MainHeadingWrapper>
       <StyledMobileMenu onClick={() => setMenuOpen(!menuOpen)} aria-label="Open menu">
         <img src={MenuIcon} alt=""/>

@@ -1,4 +1,6 @@
 import {
+  CREATE_COMPANY_REQUESTED,
+  CREATE_COMPANY_SUCCEEDED,
   FETCH_COMPANIES_REQUESTED,
   FETCH_COMPANIES_SUCCEEDED,
   FETCH_COMPANY_REQUESTED,
@@ -31,30 +33,48 @@ export const fetchCompany = (slug) => {
   }
 }
 
-export const fetchCompanySucceeded = companyInfo => {
+export const fetchCompanySucceeded = companyData => {
   return {
     type: FETCH_COMPANY_SUCCEEDED,
     payload: {
-      companyInfo
+      companyData
     }
   }
 }
 
-export const updateCompany = (slug, data) => {
+export const updateCompany = (slug, companyData) => {
   return {
     type: UPDATE_COMPANY,
     payload: {
       slug,
-      data
+      companyData
     }
   }
 }
 
-export const updateCompanySucceeded = companyInfo => {
+export const updateCompanySucceeded = companyData => {
   return {
     type: UPDATE_COMPANY_SUCCEEDED,
     payload: {
-      companyInfo
+      companyData
+    }
+  }
+}
+
+export const createCompany = companyData => {
+  return {
+    type: CREATE_COMPANY_REQUESTED,
+    payload: {
+      companyData
+    }
+  }
+}
+
+export const createCompanySucceeded = companyData => {
+  return {
+    type: CREATE_COMPANY_SUCCEEDED,
+    payload: {
+      companyData
     }
   }
 }

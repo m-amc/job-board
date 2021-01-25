@@ -1,5 +1,6 @@
 import { all, takeLatest, takeEvery } from 'redux-saga/effects'
 import {
+  handleCreateCompany,
   handleFetchCompaniesRequest,
   handleFetchCompanyRequest,
   handleUpdateCompany
@@ -7,7 +8,8 @@ import {
 import {
   FETCH_COMPANIES_REQUESTED,
   FETCH_COMPANY_REQUESTED,
-  UPDATE_COMPANY
+  UPDATE_COMPANY,
+  CREATE_COMPANY_REQUESTED
 } from '../actions/action-types'
 
 /**
@@ -18,7 +20,8 @@ export default function* rootSaga() {
   yield all([
     takeLatest(FETCH_COMPANIES_REQUESTED, handleFetchCompaniesRequest),
     takeLatest(FETCH_COMPANY_REQUESTED, handleFetchCompanyRequest),
-    takeEvery(UPDATE_COMPANY, handleUpdateCompany)
+    takeEvery(UPDATE_COMPANY, handleUpdateCompany),
+    takeEvery(CREATE_COMPANY_REQUESTED, handleCreateCompany)
   ])
 }
 

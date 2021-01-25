@@ -15,10 +15,27 @@ export function* requestCompany(slug) {
   })
 }
 
-export function* updateCompany({slug, data}) {
+export function* updateCompany({slug, companyData}) {
   return yield axios.request({
     method: 'patch',
     url: `/api/v1/companies/${slug}.json`,
-    data: data
+    data: {
+      company: companyData
+    }
+  })
+}
+
+/**
+ * @param {Object} companyData - the object in handleCreateCompany action.payload
+ * Note: the company_params in CompaniesController expects the data to be nested inside the "company" object that's why we need to do that in the data object below.
+ */
+export function* createCompany({ companyData }) {
+  return yield axios.request({
+    method: 'post',
+    url: `/api/v1/companies.json`,
+    data: {
+      company: companyData
+    },
+    withCredentials: true
   })
 }
