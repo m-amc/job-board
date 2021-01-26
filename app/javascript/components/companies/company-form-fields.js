@@ -101,3 +101,22 @@ export const CompanySignUpFormFields = () => (
     />
   </>
 )
+
+export const CompanyLoginFormFields = () => (
+  <>
+    <FormField
+      fieldType={FIELD_TYPE.input}
+      type="email"
+      name="email"
+      id="email"
+      label="Email"
+    />
+    <FormField
+      fieldType={FIELD_TYPE.input}
+      type="password"
+      name="password"
+      id="password"
+      label="Password"
+    />
+  </>
+)

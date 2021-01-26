@@ -1,7 +1,6 @@
 import * as Yup from 'yup';
 import { useSelector } from 'react-redux';
-
-const REQUIRED = 'Required';
+import { REQUIRED } from '../constants';
 
 export const useCompanyDetails = () => {
   const companyDetails = useSelector(state => {
