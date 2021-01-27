@@ -1,5 +1,6 @@
 import { all, takeLatest, takeEvery } from 'redux-saga/effects'
 import {
+  handleUserLogin,
   handleCreateCompany,
   handleFetchCompaniesRequest,
   handleFetchCompanyRequest,
@@ -9,7 +10,8 @@ import {
   FETCH_COMPANIES_REQUESTED,
   FETCH_COMPANY_REQUESTED,
   UPDATE_COMPANY,
-  CREATE_COMPANY_REQUESTED
+  CREATE_COMPANY_REQUESTED,
+  LOGIN_USER_REQUESTED
 } from '../actions/action-types'
 
 /**
@@ -21,7 +23,8 @@ export default function* rootSaga() {
     takeLatest(FETCH_COMPANIES_REQUESTED, handleFetchCompaniesRequest),
     takeLatest(FETCH_COMPANY_REQUESTED, handleFetchCompanyRequest),
     takeEvery(UPDATE_COMPANY, handleUpdateCompany),
-    takeEvery(CREATE_COMPANY_REQUESTED, handleCreateCompany)
+    takeEvery(CREATE_COMPANY_REQUESTED, handleCreateCompany),
+    takeEvery(LOGIN_USER_REQUESTED, handleUserLogin)
   ])
 }
 

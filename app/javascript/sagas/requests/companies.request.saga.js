@@ -39,3 +39,16 @@ export function* createCompany({ companyData }) {
     withCredentials: true
   })
 }
+
+export function* loginUser({companyAccount}) {
+  return yield axios.request({
+    method: 'post',
+    url: `/api/v1/login.json`,
+    data: {
+      session: {
+        user: companyAccount
+      }
+    },
+    withCredentials: true
+  })
+}

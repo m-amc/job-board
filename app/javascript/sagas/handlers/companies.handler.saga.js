@@ -6,13 +6,15 @@ import {
   createCompanySucceeded,
   fetchCompaniesSucceeded,
   fetchCompanySucceeded,
+  loginUserSucceeded,
   updateCompanySucceeded
 } from '../../actions';
 import {
   requestCompanies,
   requestCompany,
   updateCompany,
-  createCompany
+  createCompany,
+  loginUser
 } from '../requests/companies.request.saga';
 
 export function* handleFetchCompaniesRequest() {
@@ -60,6 +62,18 @@ export function* handleCreateCompany(action) {
     const response = yield call(createCompany, action.payload);
     const { data } = response;
     yield put(createCompanySucceeded(data.data.attributes))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export function* handleUserLogin(action) {
+  try {
+    const response = yield call(loginUser, action.payload);
+
+    console.log("RESPONSE", response)
+    const { data } = response;
+    yield put(loginUserSucceeded(data.data.attributes))
   } catch (error) {
     console.log(error)
   }

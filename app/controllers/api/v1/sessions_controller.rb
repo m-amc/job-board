@@ -1,10 +1,12 @@
 module Api
   module V1
-    class SessionsConroller < ApplicationController
+    class SessionsController < ApplicationController
       include CurrentUserConcern
 
       def create
-        company = Company.find_by(email: params['company']['email']).try(:authenticate, params['company']['password'])
+        company = Company
+                  .find_by(email: params[:session][:user][:email])
+                  .try(:authenticate, params[:session][:user][:password])
 
         # If the company was found
         if company
@@ -13,7 +15,7 @@ module Api
           # This allows the company to be authenticated once an remained logged in until we destroy the session.
           session[:company_id] = company.id
 
-          render json: CompanySerializer
+          render json: SessionSerializer
             .new(company, { params: { status: :created, logged_in: true } })
             .serializable_hash.to_json
         else

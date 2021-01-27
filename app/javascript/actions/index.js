@@ -6,7 +6,9 @@ import {
   FETCH_COMPANY_REQUESTED,
   FETCH_COMPANY_SUCCEEDED,
   UPDATE_COMPANY,
-  UPDATE_COMPANY_SUCCEEDED
+  UPDATE_COMPANY_SUCCEEDED,
+  LOGIN_USER_REQUESTED,
+  LOGIN_USER_SUCCEEDED
 } from './action-types';
 
 export const fetchCompanies = () => ({
@@ -75,6 +77,24 @@ export const createCompanySucceeded = companyData => {
     type: CREATE_COMPANY_SUCCEEDED,
     payload: {
       companyData
+    }
+  }
+}
+
+export const loginUser = companyAccount => {
+  return {
+    type: LOGIN_USER_REQUESTED,
+    payload: {
+      companyAccount
+    }
+  }
+}
+
+export const loginUserSucceeded = companyUser => {
+  return {
+    type: LOGIN_USER_SUCCEEDED,
+    payload: {
+      currentUser: companyUser
     }
   }
 }
