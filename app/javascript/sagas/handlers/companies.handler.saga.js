@@ -67,11 +67,10 @@ export function* handleCreateCompany(action) {
   }
 }
 
+// The user here is the company itself. For now, only companies can login and post jobs
 export function* handleUserLogin(action) {
   try {
     const response = yield call(loginUser, action.payload);
-
-    console.log("RESPONSE", response)
     const { data } = response;
     yield put(loginUserSucceeded(data.data.attributes))
   } catch (error) {

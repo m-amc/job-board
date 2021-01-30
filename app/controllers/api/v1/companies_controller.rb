@@ -19,7 +19,7 @@ module Api
           # To automatically authenticate and sign in the company user after creation/registration
           session[:company_id] = company.id
           render json: CompanySerializer
-            .new(company, { params: { status: :created } })
+            .new(company, { params: { status: :created, logged_in: true } })
             .serializable_hash.to_json
         else
           render json: { error: company.errors.messages }, status: 422

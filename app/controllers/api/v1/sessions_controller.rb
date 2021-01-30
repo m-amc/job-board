@@ -3,16 +3,17 @@ module Api
     class SessionsController < ApplicationController
       include CurrentUserConcern
 
+      # This creates the session when the user logs in
       def create
         company = Company
                   .find_by(email: params[:session][:user][:email])
                   .try(:authenticate, params[:session][:user][:password])
-
+        
         # If the company was found
         if company
           # Rails provides a session object which can be accessed using a session instance method. 
           # We can use the session object to store some info that we would like to track. 
-          # This allows the company to be authenticated once an remained logged in until we destroy the session.
+          # This allows the company to be authenticated once and remained logged in until we destroy the session.
           session[:company_id] = company.id
 
           render json: SessionSerializer

@@ -11,6 +11,7 @@ import LightTheme from '../themes/light';
 import { CompanySignUp } from './companies/company-sign-up';
 import { PostJob } from './jobs/post-job';
 import { CompanyLogin } from './companies/company-login';
+import AuthRoute from './auth-route';
 
 const App = () => {
   return (
@@ -22,8 +23,12 @@ const App = () => {
           <Route exact path="/companies" component={CompaniesListing} />
           <Route exact path="/companies/:slug" component={CompanyShow} />
           <Route exact path="/jobs/new" component={PostJob} />
-          <Route exact path="/join/sign-up" component={CompanySignUp} />
-          <Route exact path="/login" component={CompanyLogin} />
+          <AuthRoute exact path="/join/sign-up" >
+            <CompanySignUp />
+          </AuthRoute>
+          <AuthRoute exact path="/login">
+            <CompanyLogin />
+          </AuthRoute>
         </Switch>
       </ThemeProvider>
     </Provider>

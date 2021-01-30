@@ -34,9 +34,6 @@ export const CompanySignUp = () => {
           <Button type="submit">Sign Up!</Button>
         </Form>
       </Formik>
-      {
-        company.status === STATUS.created ? <Redirect to="/jobs/new" push /> : null
-      }
     </PageLayout>
   )
 }

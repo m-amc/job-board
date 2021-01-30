@@ -6,5 +6,9 @@ class CompanySerializer
     params[:status]
   end
 
+  attribute :logged_in do |_, params|
+    params[:logged_in]
+  end
+
   has_many :job_postings
 end
