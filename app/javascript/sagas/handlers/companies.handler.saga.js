@@ -61,7 +61,16 @@ export function* handleCreateCompany(action) {
   try {
     const response = yield call(createCompany, action.payload);
     const { data } = response;
-    yield put(createCompanySucceeded(data.data.attributes))
+    yield put(createCompanySucceeded(data.data.attributes));
+
+    if (data) {
+      // Company is also the user so if it is created successfully, we should create a user object in the store. It will be used by AuthRoute.
+      const currentUser = {
+        email: data.data.attributes.email,
+        logged_in: true
+      }
+      yield put(loginUserSucceeded(currentUser))
+    }
   } catch (error) {
     console.log(error)
   }

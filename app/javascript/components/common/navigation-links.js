@@ -89,13 +89,25 @@ const FIND_JOBS = "Find jobs";
 const POST_JOBS = "Post jobs";
 const EMPLOYER_SIGN_UP = "Sign Up"
 
-export const NavigationMenu = ({menuOpen}) => {
+export const NavigationMenu = ({ menuOpen }) => {
   return (
     <Menu open={menuOpen}>
       <ul>
-        <li><StyledLink to="/jobs" data-text={FIND_JOBS}>{FIND_JOBS}</StyledLink></li>
-        <li><StyledLink to="/login" data-text={POST_JOBS}>{POST_JOBS}</StyledLink></li>
-        <li><StyledLink to="/join/sign-up" data-text={EMPLOYER_SIGN_UP}>{EMPLOYER_SIGN_UP}</StyledLink></li>
+        <li>
+          <StyledLink to="/jobs" data-text={FIND_JOBS}>
+            {FIND_JOBS}
+          </StyledLink>
+        </li>
+        <li>
+          <StyledLink to="/login" data-text={POST_JOBS}>
+            {POST_JOBS}
+          </StyledLink>
+        </li>
+        <li>
+          <StyledLink to="/join/sign-up" data-text={EMPLOYER_SIGN_UP}>
+            {EMPLOYER_SIGN_UP}
+          </StyledLink>
+        </li>
       </ul>
     </Menu>
   )
