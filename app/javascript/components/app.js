@@ -29,6 +29,7 @@ const App = () => {
           <AuthRoute exact path="/login">
             <CompanyLogin />
           </AuthRoute>
+          <Route exact path="/logout" />
         </Switch>
       </ThemeProvider>
     </Provider>

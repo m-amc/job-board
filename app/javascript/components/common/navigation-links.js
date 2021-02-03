@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { media } from './media-queries';
@@ -45,11 +46,13 @@ Menu.propTypes = {
   open: PropTypes.bool.isRequired
 }
 
-const LinkItem = ({ children, ...props }) => (
-  <Link {...props}>
-    {children}
-  </Link>
-)
+const LinkItem = ({ children, ...props }) => {
+  return (
+    <Link {...props}>
+      {children}
+    </Link>
+  )
+}
 
 LinkItem.propTypes = {
   children: PropTypes.node.isRequired
@@ -88,8 +91,11 @@ const StyledLink = styled(LinkItem)`
 const FIND_JOBS = "Find jobs";
 const POST_JOBS = "Post jobs";
 const EMPLOYER_SIGN_UP = "Sign Up"
+const LOGOUT = "Logout"
 
 export const NavigationMenu = ({ menuOpen }) => {
+  const { logged_in: isLoggedIn } = useSelector(state => state.user.currentUser)
+
   return (
     <Menu open={menuOpen}>
       <ul>
@@ -98,16 +104,30 @@ export const NavigationMenu = ({ menuOpen }) => {
             {FIND_JOBS}
           </StyledLink>
         </li>
+        {/* LOGIN / POST JOBS*/}
         <li>
           <StyledLink to="/login" data-text={POST_JOBS}>
             {POST_JOBS}
           </StyledLink>
         </li>
-        <li>
-          <StyledLink to="/join/sign-up" data-text={EMPLOYER_SIGN_UP}>
-            {EMPLOYER_SIGN_UP}
-          </StyledLink>
-        </li>
+        {/* LOGOUT */}
+        {
+          isLoggedIn && (<li>
+            <StyledLink to="/logout" data-text={LOGOUT}>
+              {LOGOUT}
+            </StyledLink>
+          </li>)
+        }
+        {/* SIGN UP */}
+        {
+          !isLoggedIn && (
+            <li>
+              <StyledLink to="/join/sign-up" data-text={EMPLOYER_SIGN_UP}>
+                {EMPLOYER_SIGN_UP}
+              </StyledLink>
+            </li>
+          )
+        }
       </ul>
     </Menu>
   )
