@@ -32,7 +32,7 @@ export function* updateCompany({slug, companyData}) {
 export function* createCompany({ companyData }) {
   return yield axios.request({
     method: 'post',
-    url: `/api/v1/companies.json`,
+    url: '/api/v1/companies.json',
     data: {
       company: companyData
     },
@@ -40,15 +40,31 @@ export function* createCompany({ companyData }) {
   })
 }
 
-export function* loginUser({companyAccount}) {
+export function* loginUser({ companyUser}) {
   return yield axios.request({
     method: 'post',
-    url: `/api/v1/login.json`,
+    url: '/api/v1/login.json',
     data: {
       session: {
-        user: companyAccount
+        user: companyUser
       }
     },
+    withCredentials: true
+  })
+}
+
+export function* logoutUser() {
+  return yield axios.request({
+    method: 'delete',
+    url: '/api/v1/logout.json',
+    withCredentials: true
+  })
+}
+
+export function* requestAPILoginStatus() {
+  return yield axios.request({
+    method: 'get',
+    url: '/api/v1/logged_in.json',
     withCredentials: true
   })
 }

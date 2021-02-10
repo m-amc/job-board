@@ -11,7 +11,8 @@ import LightTheme from '../themes/light';
 import { CompanySignUp } from './companies/company-sign-up';
 import { PostJob } from './jobs/post-job';
 import { CompanyLogin } from './companies/company-login';
-import AuthRoute from './auth-route';
+import RedirectOnLogin from './auth-route/redirect-on-login';
+import ProtectedRoute from './auth-route/protected-route';
 
 const App = () => {
   return (
@@ -19,16 +20,32 @@ const App = () => {
       <ThemeProvider theme={LightTheme}>
         <GlobalStyle />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/companies" component={CompaniesListing} />
-          <Route exact path="/companies/:slug" component={CompanyShow} />
-          <Route exact path="/jobs/new" component={PostJob} />
-          <AuthRoute exact path="/join/sign-up" >
+          <Route
+            exact
+            path="/"
+            component={Home}
+          />
+          <ProtectedRoute
+            exact
+            path="/companies"
+            component={CompaniesListing}
+          />
+          <ProtectedRoute
+            exact
+            path="/companies/:slug"
+            component={CompanyShow}
+          />
+          <ProtectedRoute
+            exact
+            path="/jobs/new"
+            component={PostJob}
+          />
+          <RedirectOnLogin exact path="/join/sign-up">
             <CompanySignUp />
-          </AuthRoute>
-          <AuthRoute exact path="/login">
+          </RedirectOnLogin>
+          <RedirectOnLogin exact path="/login">
             <CompanyLogin />
-          </AuthRoute>
+          </RedirectOnLogin>
           <Route exact path="/logout" />
         </Switch>
       </ThemeProvider>

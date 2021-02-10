@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const AuthRoute = ({ logged_in: loggedIn, ...props }) => {
-  if (loggedIn) {
+const RedirectOnLogin = ({ logged_in: isLoggedIn, ...props }) => {
+  if (isLoggedIn) {
     return <Redirect to="/jobs/new" push />
   }
 
@@ -14,4 +14,4 @@ const mapStateToProps = state => {
   return state.user.currentUser
 }
 
-export default connect(mapStateToProps)(AuthRoute)
+export default connect(mapStateToProps)(RedirectOnLogin)

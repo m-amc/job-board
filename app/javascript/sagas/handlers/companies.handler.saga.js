@@ -4,9 +4,11 @@
 import { call, put } from 'redux-saga/effects';
 import {
   createCompanySucceeded,
+  fetchAPILoginStatusSucceeded,
   fetchCompaniesSucceeded,
   fetchCompanySucceeded,
   loginUserSucceeded,
+  logoutUserSucceeded,
   updateCompanySucceeded
 } from '../../actions';
 import {
@@ -14,7 +16,9 @@ import {
   requestCompany,
   updateCompany,
   createCompany,
-  loginUser
+  loginUser,
+  logoutUser,
+  requestAPILoginStatus
 } from '../requests/companies.request.saga';
 
 export function* handleFetchCompaniesRequest() {
@@ -82,6 +86,26 @@ export function* handleUserLogin(action) {
     const response = yield call(loginUser, action.payload);
     const { data } = response;
     yield put(loginUserSucceeded(data.data.attributes))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export function* handleUserLogout(action) {
+  try {
+    const response = yield call(logoutUser, action.payload)
+    const { data } = response;
+    yield put(logoutUserSucceeded({logged_in: data.logged_in}))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export function* handleFetchAPILoginStatus() {
+  try {
+    const response = yield call(requestAPILoginStatus)
+    const { data } = response;
+    yield put(fetchAPILoginStatusSucceeded(data))
   } catch (error) {
     console.log(error)
   }

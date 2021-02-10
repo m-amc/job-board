@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { media } from './media-queries';
+import { logoutUser } from '../../actions';
 
 const Menu = styled.nav`
   display: ${ p => p.open ? 'block' : 'none'};
@@ -94,6 +95,8 @@ const EMPLOYER_SIGN_UP = "Sign Up"
 const LOGOUT = "Logout"
 
 export const NavigationMenu = ({ menuOpen }) => {
+  const history = useHistory()
+  const dispatch = useDispatch()
   const { logged_in: isLoggedIn } = useSelector(state => state.user.currentUser)
 
   return (
@@ -113,7 +116,14 @@ export const NavigationMenu = ({ menuOpen }) => {
         {/* LOGOUT */}
         {
           isLoggedIn && (<li>
-            <StyledLink to="/logout" data-text={LOGOUT}>
+            <StyledLink
+              to="/logout"
+              data-text={LOGOUT}
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(logoutUser());
+                history.push("/")
+              }}>
               {LOGOUT}
             </StyledLink>
           </li>)

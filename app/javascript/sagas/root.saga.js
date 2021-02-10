@@ -4,14 +4,18 @@ import {
   handleCreateCompany,
   handleFetchCompaniesRequest,
   handleFetchCompanyRequest,
-  handleUpdateCompany
+  handleUpdateCompany,
+  handleUserLogout,
+  handleFetchAPILoginStatus
 } from './handlers/companies.handler.saga';
 import {
   FETCH_COMPANIES_REQUESTED,
   FETCH_COMPANY_REQUESTED,
   UPDATE_COMPANY,
   CREATE_COMPANY_REQUESTED,
-  LOGIN_USER_REQUESTED
+  LOGIN_USER_REQUESTED,
+  LOGOUT_USER_REQUESTED,
+  FETCH_API_LOGIN_STATUS
 } from '../actions/action-types'
 
 /**
@@ -24,7 +28,9 @@ export default function* rootSaga() {
     takeLatest(FETCH_COMPANY_REQUESTED, handleFetchCompanyRequest),
     takeEvery(UPDATE_COMPANY, handleUpdateCompany),
     takeEvery(CREATE_COMPANY_REQUESTED, handleCreateCompany),
-    takeEvery(LOGIN_USER_REQUESTED, handleUserLogin)
+    takeEvery(LOGIN_USER_REQUESTED, handleUserLogin),
+    takeEvery(LOGOUT_USER_REQUESTED, handleUserLogout),
+    takeEvery(FETCH_API_LOGIN_STATUS, handleFetchAPILoginStatus)
   ])
 }
 

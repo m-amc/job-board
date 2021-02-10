@@ -5,7 +5,6 @@ import { Formik, Form } from 'formik';
 import { CompanySignUpFormFields } from './company-form-fields';
 import { PageLayout } from '../common/page-layout';
 import { useCompanyDetails } from './use-company';
-import { Redirect } from 'react-router-dom';
 import { Button } from '../common/button'
 
 const STATUS = {

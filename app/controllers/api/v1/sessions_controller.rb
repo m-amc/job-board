@@ -42,7 +42,7 @@ module Api
         reset_session
         render json: {
           status: 200,
-          logged_out: true
+          logged_in: false
         }
       end
     end

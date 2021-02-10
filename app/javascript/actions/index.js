@@ -8,7 +8,12 @@ import {
   UPDATE_COMPANY,
   UPDATE_COMPANY_SUCCEEDED,
   LOGIN_USER_REQUESTED,
-  LOGIN_USER_SUCCEEDED
+  LOGIN_USER_SUCCEEDED,
+  LOGOUT_USER_REQUESTED,
+  LOGOUT_USER_SUCCEEDED,
+  CHECK_API_LOGIN_STATUS,
+  FETCH_API_LOGIN_STATUS,
+  FETCH_API_LOGIN_STATUS_SUCCEEDED,
 } from './action-types';
 
 export const fetchCompanies = () => ({
@@ -81,11 +86,11 @@ export const createCompanySucceeded = companyData => {
   }
 }
 
-export const loginUser = companyAccount => {
+export const loginUser = companyUser => {
   return {
     type: LOGIN_USER_REQUESTED,
     payload: {
-      companyAccount
+      companyUser
     }
   }
 }
@@ -93,6 +98,35 @@ export const loginUser = companyAccount => {
 export const loginUserSucceeded = companyUser => {
   return {
     type: LOGIN_USER_SUCCEEDED,
+    payload: {
+      currentUser: companyUser
+    }
+  }
+}
+
+export const logoutUser = () => {
+  return {
+    type: LOGOUT_USER_REQUESTED,
+    payload: {}
+  }
+}
+
+export const logoutUserSucceeded = companyUser => {
+  return {
+    type: LOGOUT_USER_SUCCEEDED,
+    payload: {
+      currentUser: companyUser
+    }
+  }
+}
+
+export const fetchAPILoginStatus = () => ({
+  type: FETCH_API_LOGIN_STATUS
+});
+
+export const fetchAPILoginStatusSucceeded = companyUser => {
+  return {
+    type: FETCH_API_LOGIN_STATUS_SUCCEEDED,
     payload: {
       currentUser: companyUser
     }

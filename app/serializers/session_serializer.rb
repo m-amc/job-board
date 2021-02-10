@@ -9,4 +9,8 @@ class SessionSerializer
   attribute :logged_in do |_, params|
     params[:logged_in]
   end
+
+  attribute :logged_out do |_, params|
+    params[:logged_out]
+  end
 end
