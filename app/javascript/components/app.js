@@ -13,6 +13,7 @@ import { PostJob } from './jobs/post-job';
 import { CompanyLogin } from './companies/company-login';
 import RedirectOnLogin from './auth-route/redirect-on-login';
 import ProtectedRoute from './auth-route/protected-route';
+import { FindJobs } from './jobs/find-jobs';
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
             path="/companies/:slug"
             component={CompanyShow}
           />
+          <Route path="/jobs" component={ FindJobs }/>
           <ProtectedRoute
             exact
             path="/jobs/new"
