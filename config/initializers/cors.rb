@@ -11,8 +11,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   end
 
   allow do
-    # ToDo: change the domain
-    origins "https://job-board-app.heroku.com"
+    origins "https://job-board-rails-react.herokuapp.com"
 
     # allow all resources and allow any for headers
     resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
