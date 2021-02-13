@@ -3,26 +3,38 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { media } from '../common/media-queries';
 import { NavigationMenu } from './navigation-links';
-import MenuIcon from '../../../assets/images/menu.svg'
+import { HeadingOne, Box } from '../../themes/atoms';
+import MenuIcon from '../../../assets/images/menu.svg';
 
-const HeaderWrapper = styled.div`
-  height: 8rem;
+const FlexHeaderWrapper = styled.div`
+  height: 10vh;
   width: 100%;
-  box-sizing: border-box;
-  position: fixed;
-  padding: 0 1.6rem;
-  top: 0;
   background: linear-gradient( to right, ${ p => p.theme.primaryColor}, ${p => p.theme.secondaryColor});
+`
+
+const StyledBox = styled(Box)`
   display: flex;
+  position: relative;
+  max-width: 1024px;
+  margin: auto;
+  align-items: center;
+  height: inherit;
+  padding: 0 2rem;
+
+  ${media.tablet`
+    padding: 0;
+  `}
 `
 
 const MainHeadingWrapper = styled.div`
   color: white;
   width: 50%;
+  display:flex;
+  align-items: center;
 `
 
 const StyledMobileMenu = styled.button`
-  width: 4rem;
+  width: 3.5rem;
   padding: 0.5rem;
   margin: auto 0 auto auto;
   border: none;
@@ -37,22 +49,26 @@ const StyledLink = styled(Link)`
   color: white;
   text-decoration: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 `
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <HeaderWrapper>
-      <MainHeadingWrapper>
-        <h1>
-          <StyledLink to="/">Job Board</StyledLink>
-        </h1>
-      </MainHeadingWrapper>
-      <StyledMobileMenu onClick={() => setMenuOpen(!menuOpen)} aria-label="Open menu">
-        <img src={MenuIcon} alt=""/>
-      </StyledMobileMenu>
-      <NavigationMenu menuOpen={menuOpen}/>
-    </HeaderWrapper>
+    <FlexHeaderWrapper>
+      <StyledBox>
+        <MainHeadingWrapper>
+          <HeadingOne>
+            <StyledLink to="/">Job Board</StyledLink>
+          </HeadingOne>
+        </MainHeadingWrapper>
+        <StyledMobileMenu onClick={() => setMenuOpen(!menuOpen)} aria-label="Open menu">
+          <img src={MenuIcon} alt=""/>
+        </StyledMobileMenu>
+        <NavigationMenu menuOpen={menuOpen}/>
+      </StyledBox>
+    </FlexHeaderWrapper>
   )
 }

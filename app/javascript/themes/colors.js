@@ -5,6 +5,8 @@ const base = {
 
 const colors = {
   blueDark: '#1c77c3',
+  blueDarker: '#196cb1',
+  blueDarkest: '#064789',
   blueLight: '#0094c1',
   blueLighter: '#39a9db',
   ...base

@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, ErrorMessage } from 'formik';
+import { ErrorMessage } from 'formik';
 import { FieldError } from './field-error';
+import { Box, Field, Label } from '../../../themes/atoms';
 
 export const SelectField = ({ label, name, options, ...rest }) => (
-  <div>
-    <label htmlFor={name}>{label}</label>
+  <Box display="block">
+    <Label htmlFor={name}>{label}</Label>
     <Field
       as="select"
       id={name}
       name={name}
+      marginTop="0.5rem"
       {...rest}
     >
       {
@@ -24,7 +26,7 @@ export const SelectField = ({ label, name, options, ...rest }) => (
       }
     </Field>
     <ErrorMessage name={name} component={FieldError} />
-  </div>
+  </Box>
 )
 
 SelectField.propTypes = {

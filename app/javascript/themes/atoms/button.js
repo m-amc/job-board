@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 export const Button = styled.button`
   color: ${ p => p.theme.white};
   background: ${ p => p.secondary ? p.theme.secondaryColor : p.theme.primaryColor};
+  margin: ${ p => p.margin};
+  margin-top: ${ p => p.marginTop};
   font-weight: bold;
   padding: 1rem 2rem;
   border-radius: 0.5rem;
@@ -14,9 +16,11 @@ export const Button = styled.button`
 `
 
 Button.propTypes = {
-  secondary: PropTypes.bool
+  secondary: PropTypes.bool,
+  marginTop: PropTypes.string
 }
 
 Button.defaultProps = {
-  secondary: false
+  secondary: false,
+  marginTop: null
 }

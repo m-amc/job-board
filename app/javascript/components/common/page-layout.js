@@ -5,15 +5,14 @@ import { Header } from './header';
 
 const Content = styled.main`
   max-width: 1024px;
-  box-sizing: border-box;
-  font-family: 'Helvetica';
-  margin: 10rem auto 0 auto;
+  margin: auto;
+  height: ${ p => p.height || '90vh'};
 `
 
-export const PageLayout = ({ children }) => (
+export const PageLayout = ({ children, ...props }) => (
   <>
     <Header />
-    <Content>
+    <Content {...props}>
       {children}
     </Content>
   </>

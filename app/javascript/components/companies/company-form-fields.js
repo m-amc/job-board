@@ -3,21 +3,9 @@ import {
   FormField,
   FIELD_TYPE
 } from '../common/form-fields/form-field';
+import { COUNTRY_OPTIONS, STATE_OPTIONS} from '../constants'
 
-// Temporary: state and country data will be moved to the backend
-const stateOptions = [
-  { name: 'Select State or Province', value: '' },
-  { name: 'Ontario', value: 'ON' },
-  { name: 'British Columbia', value: 'BC' }
-]
-
-const countryOptions = [
-  { name: 'Select Country', value: '' },
-  { name: 'Canada', value: 'CA' },
-  { name: 'USA', value: 'US' }
-]
-
-export const CompanyFormFields = () => (
+export const CompanyFormFields = ({isSignUp}) => (
   <>
     <FormField
       fieldType={FIELD_TYPE.input}
@@ -45,7 +33,7 @@ export const CompanyFormFields = () => (
       name="state"
       id="state"
       label="State"
-      options={stateOptions}
+      options={STATE_OPTIONS}
     />
 
     <FormField
@@ -53,7 +41,7 @@ export const CompanyFormFields = () => (
       name="country_code"
       id="country_code"
       label="Country"
-      options={countryOptions}
+      options={COUNTRY_OPTIONS}
     />
 
     <FormField
@@ -71,27 +59,33 @@ export const CompanyFormFields = () => (
       label="Email"
     />
 
-    <FormField
-      fieldType={FIELD_TYPE.input}
-      name="website"
-      id="website"
-      label="Website"
-    />
+    {
+      !isSignUp && (
+        <>
+          <FormField
+            fieldType={FIELD_TYPE.input}
+            name="website"
+            id="website"
+            label="Website"
+          />
 
-    <FormField
-      fieldType={FIELD_TYPE.textArea}
-      name="about"
-      id="about"
-      label="About"
-      rows="10"
-      cols="50"
-    />
+          <FormField
+            fieldType={FIELD_TYPE.textArea}
+            name="about"
+            id="about"
+            label="About"
+            rows="10"
+            cols="30"
+          />
+        </>
+      )
+    }
   </>
 )
 
 export const CompanySignUpFormFields = () => (
   <>
-    <CompanyFormFields />
+    <CompanyFormFields isSignUp/>
     <FormField
       fieldType={FIELD_TYPE.input}
       type="password"
@@ -109,7 +103,7 @@ export const CompanyLoginFormFields = () => (
       type="email"
       name="email"
       id="email"
-      label="Email"
+      label="Email Address"
     />
     <FormField
       fieldType={FIELD_TYPE.input}

@@ -6,7 +6,7 @@ import { fetchCompany, updateCompany } from '../../actions';
 import { CompanyFormFields } from './company-form-fields';
 import { PageLayout } from '../common/page-layout';
 import { useCompanyDetails } from './use-company';
-import { Button } from '../common/button'
+import { Button } from '../../themes/atoms';
 
 export const CompanyShow = ({ match }) => {
   const slug = match.params.slug;

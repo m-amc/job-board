@@ -36,7 +36,7 @@ const App = () => {
             path="/companies/:slug"
             component={CompanyShow}
           />
-          <Route path="/jobs" component={ FindJobs }/>
+          <Route exact path="/jobs" component={ FindJobs }/>
           <ProtectedRoute
             exact
             path="/jobs/new"

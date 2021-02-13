@@ -8,6 +8,10 @@ const FooterWrapper = styled.div`
   text-align: center;
   width: 100%;
   color: white;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export const Footer = () => (

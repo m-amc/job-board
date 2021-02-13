@@ -10,10 +10,8 @@ const Menu = styled.nav`
   display: ${ p => p.open ? 'block' : 'none'};
   position: absolute;
   width: 100%;
-  top: 8rem;
   left: 0;
-  padding: 0.8rem;
-  box-sizing: border-box;
+  bottom: -125px;
   background: ${p => p.theme.bodyBackgroundColor};
 
   ul {
@@ -27,7 +25,8 @@ const Menu = styled.nav`
     position: relative;
     background: none;
     left: initial;
-    top: initial;
+    bottom: initial;
+    width: 50%;
 
     ul {
       display: flex;
@@ -62,14 +61,13 @@ LinkItem.propTypes = {
 const StyledLink = styled(LinkItem)`
   display: block;
   text-align: center;
-  box-sizing: border-box;
   margin: auto 0;
   text-decoration: none;
-  padding: 1rem;
+  padding: 0.5rem;
   color: ${ p => p.theme.bodyFontColor};
+  font-size: 1.8rem;
 
   &:hover{
-    /* border-bottom: 2px solid red; */
     font-weight: bold;
     cursor: pointer;
   }

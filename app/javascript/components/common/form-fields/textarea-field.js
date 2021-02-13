@@ -1,19 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, ErrorMessage } from 'formik';
+import { ErrorMessage, Field } from 'formik';
 import { FieldError } from './field-error';
+import { Box, Label } from '../../../themes/atoms';
+
+const TextArea = ({ name, ...props }) => (
+  <Field
+    as="textarea"
+    id={name}
+    name={name}
+    rows="20"
+    {...props}
+  />
+)
 
 export const TextAreaField = ({ label, name, ...rest }) => (
-  <div>
-    <label htmlFor={name}>{label}</label>
-    <Field
-      as="textarea"
+  <Box>
+    <Label htmlFor={name} marginBottom="0.5rem">{label}</Label>
+    <TextArea
       id={name}
       name={name}
       {...rest}
     />
     <ErrorMessage name={name} component={FieldError} />
-  </div>
+  </Box>
 )
 
 TextAreaField.propTypes = {
