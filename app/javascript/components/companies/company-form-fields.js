@@ -3,7 +3,7 @@ import {
   FormField,
   FIELD_TYPE
 } from '../common/form-fields/form-field';
-import { COUNTRY_OPTIONS, STATE_OPTIONS} from '../constants'
+import { COUNTRY_OPTIONS, STATE_OPTIONS } from '../constants';
 
 export const CompanyFormFields = ({isSignUp}) => (
   <>
@@ -84,16 +84,7 @@ export const CompanyFormFields = ({isSignUp}) => (
 )
 
 export const CompanySignUpFormFields = () => (
-  <>
-    <CompanyFormFields isSignUp/>
-    <FormField
-      fieldType={FIELD_TYPE.input}
-      type="password"
-      name="password"
-      id="password"
-      label="Password"
-    />
-  </>
+  <CompanyFormFields isSignUp/>
 )
 
 export const CompanyLoginFormFields = () => (

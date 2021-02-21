@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { createCompany } from '../../actions'
 import { Formik, Form } from 'formik';
@@ -31,9 +31,9 @@ const SignUpWrapper = styled(Box)`
 `
 
 export const CompanySignUp = () => {
-  const { initialValues, validationSchema } = useCompanyDetails();
+  const { initialValues, signUpValidationSchema } = useCompanyDetails();
+  console.log("HELLO", signUpValidationSchema)
   const dispatch = useDispatch();
-  const company = useSelector(state => state.companyDetails.companyData);
 
   const onSubmit = values => {
     dispatch(createCompany(values));
@@ -46,7 +46,7 @@ export const CompanySignUp = () => {
           <HeadingOne fontWeight="bold">Sign Up</HeadingOne>
           <Formik
             initialValues={initialValues}
-            validationSchema={validationSchema}
+            validationSchema={signUpValidationSchema}
             onSubmit={onSubmit}
           >
             <Form>
