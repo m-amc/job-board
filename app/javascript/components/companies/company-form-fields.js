@@ -84,7 +84,16 @@ export const CompanyFormFields = ({isSignUp}) => (
 )
 
 export const CompanySignUpFormFields = () => (
-  <CompanyFormFields isSignUp/>
+  <>
+    <CompanyFormFields isSignUp />
+    <FormField
+      fieldType={FIELD_TYPE.input}
+      type="password"
+      name="password"
+      id="password"
+      label="Password"
+    />
+  </>
 )
 
 export const CompanyLoginFormFields = () => (

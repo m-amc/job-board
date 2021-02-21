@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Note: Work in Progress!
 
-Things you may want to cover:
+This is a Job Posting application built with **Ruby on Rails** for backend and **React** for frontend.
 
-* Ruby version
+<img width="300" alt="job-board-app" src="https://user-images.githubusercontent.com/30078278/108641543-bca32d80-746d-11eb-898f-a44c48faa2fb.png">
 
-* System dependencies
+## Ruby on Rails
+- Rails-React app created using `rails new <project_name> --webpack=react`
+- bcrypt gem for hash algorithm
+- jsonapi-serializer
+- PostgreSQL database
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## React
+- Redux and redux-saga
+- Hooks
+- Formik
+- syled-components
