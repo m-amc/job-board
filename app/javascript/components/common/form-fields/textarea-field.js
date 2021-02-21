@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ErrorMessage, Field } from 'formik';
+import { ErrorMessage, useField } from 'formik';
 import { FieldError } from './field-error';
-import { Box, Label } from '../../../themes/atoms';
+import { FieldWrapper } from './field-wrapper';
+import { Box, Label, Field } from '../../../themes/atoms';
 
 const TextArea = ({ name, ...props }) => (
   <Field
@@ -14,17 +15,21 @@ const TextArea = ({ name, ...props }) => (
   />
 )
 
-export const TextAreaField = ({ label, name, ...rest }) => (
-  <Box>
-    <Label htmlFor={name} marginBottom="0.5rem">{label}</Label>
-    <TextArea
-      id={name}
-      name={name}
-      {...rest}
-    />
-    <ErrorMessage name={name} component={FieldError} />
-  </Box>
-)
+export const TextAreaField = ({ label, name, ...rest }) => {
+  const [field] = useField(name);
+  return (
+    <FieldWrapper>
+      <Label htmlFor={name} marginBottom="0.5rem">{label}</Label>
+      <TextArea
+        id={name}
+        name={name}
+        {...field}
+        {...rest}
+      />
+      <ErrorMessage name={name} component={FieldError} />
+    </FieldWrapper>
+  )
+}
 
 TextAreaField.propTypes = {
   label: PropTypes.string.isRequired,

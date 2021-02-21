@@ -12,6 +12,7 @@ const HeroContainer = styled(Box)`
 	background-repeat: no-repeat;
   background-position: bottom;
   background-size: 475px;
+  width: 100%;
   height: 100%;
 
   ${ media.tablet`

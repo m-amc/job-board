@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ErrorMessage } from 'formik';
 import { FieldError } from './field-error';
-import { Box, Field, Label } from '../../../themes/atoms';
+import { FieldWrapper } from './field-wrapper';
+import { Field, Label } from '../../../themes/atoms';
 
 export const InputField = ({ label, name, ...rest }) => (
-  <Box display="block">
+  <FieldWrapper>
     <Label htmlFor={name}>{label}</Label>
     <Field
       id={name}
@@ -14,7 +15,7 @@ export const InputField = ({ label, name, ...rest }) => (
       {...rest}
     />
     <ErrorMessage name={name} component={FieldError} />
-  </Box>
+  </FieldWrapper>
 )
 
 InputField.propTypes = {

@@ -23,6 +23,7 @@ const validationSchema = Yup.object({
 
 const Wrapper = styled(Box)`
   padding: 2rem;
+  width: 100%;
 
   ${ media.tablet`
     margin-top: 5rem;
@@ -40,6 +41,10 @@ const LoginWrapper = styled(Box)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  div{
+    width: 25rem;
+  }
 
   ${ media.tablet`
     width: 40rem;

@@ -3,7 +3,7 @@ import { Field as FormikField } from 'formik';
 
 export const Field = styled(FormikField)`
   display: ${p => p.display || 'block'};
-  width: 25rem;
+  width: 100%;
   height: 3rem;
   margin-top: ${p => p.marginTop };
   margin-right: ${p => p.marginRight};

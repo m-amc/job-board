@@ -25,6 +25,10 @@ const SignUpWrapper = styled(Box)`
   justify-content: center;
   align-items: center;
 
+  div{
+    width: 25rem;
+  }
+
   ${media.tablet`
     width: 40rem;
   `}
@@ -32,7 +36,6 @@ const SignUpWrapper = styled(Box)`
 
 export const CompanySignUp = () => {
   const { initialValues, signUpValidationSchema } = useCompanyDetails();
-  console.log("HELLO", signUpValidationSchema)
   const dispatch = useDispatch();
 
   const onSubmit = values => {
@@ -41,7 +44,7 @@ export const CompanySignUp = () => {
 
   return (
     <PageLayout>
-      <Box padding="2rem">
+      <Box padding="2rem" width="100%">
         <SignUpWrapper>
           <HeadingOne fontWeight="bold">Sign Up</HeadingOne>
           <Formik

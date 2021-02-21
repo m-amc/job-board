@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ErrorMessage, useField } from 'formik';
 import { FieldError } from './field-error';
-import { Box, Field, Label } from '../../../themes/atoms';
+import { FieldWrapper } from './field-wrapper';
+import { Field, Label } from '../../../themes/atoms';
 
 /**
  * Note: using useField because because for some reason Formik Field as select is losing its automatic hook magic when styled-component is applied
@@ -11,7 +12,7 @@ import { Box, Field, Label } from '../../../themes/atoms';
 export const SelectField = ({ label, name, options, ...rest }) => {
   const [ field ] = useField(name)
   return (
-    <Box display="block">
+    <FieldWrapper>
       <Label htmlFor={name}>{label}</Label>
       <Field
         as="select"
@@ -33,7 +34,7 @@ export const SelectField = ({ label, name, options, ...rest }) => {
         }
       </Field>
       <ErrorMessage name={name} component={FieldError} />
-    </Box>
+    </FieldWrapper>
   )
 }
 
